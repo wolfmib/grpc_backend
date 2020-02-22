@@ -1,0 +1,7 @@
+show dbs
+user_db
+db
+db.user_collection.insert({uuid:UUID(),first_name:"johnny",family_name:"hung",email:"wolfmib@gmail.com",password:"1234abcd",user_id:1,email_is_valid:false})
+show collections
+db.user_collection.find()
+
