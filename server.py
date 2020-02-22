@@ -1,8 +1,8 @@
 import os
 from concurrent import futures
 import grpc
-import user_proto_pb2
-import user_proto_pb2_grpc
+import proto.user_proto_pb2 as user_proto_pb2
+import proto.user_proto_pb2_grpc as user_proto_pb2_grpc
 import time
 import threading
 

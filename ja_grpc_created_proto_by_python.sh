@@ -18,6 +18,30 @@ python_grpc_generator(){
     python3 -m grpc_tools.protoc $1 $2 $3 $4
 }
 
+my_ls(){
+    echo
+    echo "----------"
+    ls
+    echo "----------"
+    echo
+}
+
+# Reason: 
+    # Link: Keyword:  The generated import code in Python have error in xxx_pb2_grpc.py #4546
+    # Solution for Macos:
+    # cd proto && sed -i '' 's/^\(import.*pb2\)/from .\1/g' *.py
+
+MacOS_changed_pb_import_style(){
+    sed -i'.temp' -e 's/^\(import.*pb2\)/from . \1/g' *.py
+    
+    my_ls
+
+    rm *.temp
+
+    my_ls
+
+}
+
 
 echo "[Jason]: Hey, plese enter the proto you want go generated under proto folder"
 echo
@@ -53,12 +77,21 @@ echo
 python_grpc_generator $I_parameter $PythonOut_parameter $GRPCOut_parameter $genearted_path
 
 
+echo "[System]: For MacOS, I changed the import style in py  by using from . import ooo "
+cd proto 
+MacOS_changed_pb_import_style
+cd ..
+
+
+
 echo "[Jason]: Done ! check it yourself 😈"
 echo 
 echo "-----------------"
 ls -l proto 
 echo "------------------"
 echo
+
+
 
 
 
