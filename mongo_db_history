@@ -5,3 +5,9 @@ db.user_collection.insert({uuid:UUID(),first_name:"johnny",family_name:"hung",em
 show collections
 db.user_collection.find()
 
+pip3 install pymongo
+
+
+
+use admin
+db.shutdownServer()
