@@ -11,11 +11,11 @@ read nothing_var
 
 
 python_grpc_generator(){
-    echo $1  # -I./proto
+    echo $1  # proto
     echo $2  # --python_out=proto
     echo $3  # --grpc_python=proto
     echo $4  # ./proto/user_proto.proto
-    python3 -m grpc_tools.protoc $1 $2 $3 $4
+    python3 -m grpc_tools.protoc -I $1  $2 $3 $4
 }
 
 my_ls(){
@@ -49,9 +49,9 @@ echo "-----------"
 ls proto
 echo "------------"
 echo
-read proto_namet
+read proto_name
 
-I_parameter="-I./proto"
+I_parameter="proto"
 PythonOut_parameter="--python_out=proto"
 GRPCOut_parameter="--grpc_python_out=proto"
 genearted_path="./proto/$proto_name"

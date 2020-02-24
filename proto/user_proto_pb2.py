@@ -18,7 +18,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=b'\n\x10user_proto.proto\"I\n\x0fRegisterRequest\x12\x12\n\nfirst_name\x18\x01 \x01(\t\x12\x13\n\x0b\x66\x61mily_name\x18\x02 \x01(\t\x12\r\n\x05\x65mail\x18\x03 \x01(\t\"@\n\x10RegisterResponse\x12\x0c\n\x04uuid\x18\x01 \x01(\t\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x0f\n\x07user_id\x18\x03 \x01(\x05\"\"\n\x12GetUserInfoRequest\x12\x0c\n\x04uuid\x18\x01 \x01(\x05\"\x84\x01\n\x13GetUserInfoResponse\x12\x0c\n\x04uuid\x18\x01 \x01(\x05\x12\x12\n\nfirst_name\x18\x02 \x01(\t\x12\x13\n\x0b\x66\x61mily_name\x18\x03 \x01(\t\x12\r\n\x05\x65mail\x18\x04 \x01(\t\x12\x0f\n\x07user_id\x18\x05 \x01(\x05\x12\x16\n\x0e\x65mail_is_valid\x18\x06 \x01(\x08\x32\x8a\x01\n\x0bUserService\x12\x35\n\x0cregister_api\x12\x10.RegisterRequest\x1a\x11.RegisterResponse\"\x00\x12\x44\n\x15get_user_info_by_uuid\x12\x13.GetUserInfoRequest\x1a\x14.GetUserInfoResponse\"\x00\x62\x06proto3'
+  serialized_pb=b'\n\x10user_proto.proto\"I\n\x0fRegisterRequest\x12\x12\n\nfirst_name\x18\x01 \x01(\t\x12\x13\n\x0b\x66\x61mily_name\x18\x02 \x01(\t\x12\r\n\x05\x65mail\x18\x03 \x01(\t\"@\n\x10RegisterResponse\x12\x0c\n\x04uuid\x18\x01 \x01(\t\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x0f\n\x07user_id\x18\x03 \x01(\x05\"\"\n\x12GetUserInfoRequest\x12\x0c\n\x04uuid\x18\x01 \x01(\t\"\x84\x01\n\x13GetUserInfoResponse\x12\x0c\n\x04uuid\x18\x01 \x01(\t\x12\x12\n\nfirst_name\x18\x02 \x01(\t\x12\x13\n\x0b\x66\x61mily_name\x18\x03 \x01(\t\x12\r\n\x05\x65mail\x18\x04 \x01(\t\x12\x0f\n\x07user_id\x18\x05 \x01(\x05\x12\x16\n\x0e\x65mail_is_valid\x18\x06 \x01(\x08\x32\x8a\x01\n\x0bUserService\x12\x35\n\x0cregister_api\x12\x10.RegisterRequest\x1a\x11.RegisterResponse\"\x00\x12\x44\n\x15get_user_info_by_uuid\x12\x13.GetUserInfoRequest\x1a\x14.GetUserInfoResponse\"\x00\x62\x06proto3'
 )
 
 
@@ -123,8 +123,8 @@ _GETUSERINFOREQUEST = _descriptor.Descriptor(
   fields=[
     _descriptor.FieldDescriptor(
       name='uuid', full_name='GetUserInfoRequest.uuid', index=0,
-      number=1, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
@@ -154,8 +154,8 @@ _GETUSERINFORESPONSE = _descriptor.Descriptor(
   fields=[
     _descriptor.FieldDescriptor(
       name='uuid', full_name='GetUserInfoResponse.uuid', index=0,
-      number=1, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),

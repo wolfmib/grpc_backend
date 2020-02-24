@@ -59,6 +59,7 @@ message GetUserInfoRequest{
 }
 
 message GetUserInfoResponse{
+ 
     string uuid = 1;
     string first_name = 2;
     string family_name = 3;

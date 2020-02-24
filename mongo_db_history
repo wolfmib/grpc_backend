@@ -11,3 +11,5 @@ pip3 install pymongo
 
 use admin
 db.shutdownServer()
+
+db.user_collection.find({'uuid':UUID('3442a288-b100-445e-b4dc-ae6b06d3ee28')})

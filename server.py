@@ -138,6 +138,63 @@ class Listener(user_proto_pb2_grpc.UserServiceServicer):
 
         return user_proto_pb2.RegisterResponse(uuid=str(db_generated_uuid),email=request.email,user_id=db_generated_user_id)
 
+    def get_user_info_by_uuid(self,request,context):
+        self.counter += 1
+
+        if self.counter % 1000 ==0:
+            print("Servicer process cnts = ",self.counter)
+
+        # password random:
+        db_generated_password = random_password(10)
+
+        # uuid
+            # db_generated_uuid = "da00fcb1-2869-4f47-b7ed-956b9afdf7f1"
+        db_generated_uuid = uuid.uuid1()
+
+        # user_id
+            # 1. Check max_user_id
+        check_cur   = self.db.find().sort([('user_id', -1)]).limit(1)
+        _tem_data   = check_cur.next()
+        max_user_id = _tem_data['user_id']
+        self.logger.debug("the max user_id in db  = %d"%max_user_id)
+            # 2. Faire user_id += 1
+        db_generated_user_id = int(max_user_id + 1)
+
+       
+
+        self.logger.info("Get Request = ")
+        self.logger.info(request.uuid)
+
+        my_convered_uuid = uuid.UUID(request.uuid)
+        print("[INFO]: Get uuid :  %s" % str(my_convered_uuid))
+
+        tem_arg = {
+            "uuid": uuid.UUID(my_convered_uuid)
+        }
+
+        # tem_arg = {
+        #     'user_id': 13
+        # }
+
+        # Insert
+        # result = self.db.find(tem_arg)
+        result = self.db.find({'uuid': uuid.UUID('3442a288-b100-445e-b4dc-ae6b06d3ee28')})
+        my_data = result.next()
+        self.logger.info("Get the querry !")
+        self.logger.debug(my_data)
+
+        # Check DB
+        check_all  = self.db.find()
+        _tem_data = check_all.next()
+        while _tem_data:
+            self.logger.info(_tem_data)
+            try:
+                _tem_data = check_all.next()
+            except:
+                _tem_data = []
+
+        return user_proto_pb2.RegisterResponse(uuid=str(result['uuid']),first_name=result['first_name'],family_name=result['family_name'],email=result['email'],user_id=result['user_id'],email_is_valid=result['email_is_valid'])
+
 
 
 
