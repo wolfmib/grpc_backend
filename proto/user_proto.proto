@@ -54,11 +54,12 @@ message RegisterResponse{
 }
 
 message GetUserInfoRequest{
-    int32 uuid = 1;
+    string uuid = 1;
+    
 }
 
 message GetUserInfoResponse{
-    int32 uuid = 1;
+    string uuid = 1;
     string first_name = 2;
     string family_name = 3;
     string email = 4;
