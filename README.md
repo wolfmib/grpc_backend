@@ -13,3 +13,12 @@ grpc, protobuf
 
 - type mongo start your table (not auto deploy yet)
 
+
+---
+
+
+## Status report:
+---
+
+![Status](./img/status.jpg)
+

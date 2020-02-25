@@ -16,6 +16,8 @@ from logrusformatter import LogrusFormatter   #!pip3 install logrusformatter
 ######################### mongodb_handler () ##############
 from pymongo import MongoClient
 import uuid
+import pprint
+import bson # fix uid.UUID() class issue
 ###########################################################
 
 ###### random password #####
@@ -47,10 +49,21 @@ def logger_handler():
     return logger
 
 def mongodb_handler():
-    client = MongoClient('mongodb://localhost:27017/')
-    db = client.user_db
+    db_address = "mongodb://localhost:27017/"
+    client = MongoClient(db_address)
+
+    print("-----------------------------------------")
+    print("[MongoDB]: Set the uuid-format for the db [%s] !!" % db_address)
+    print("-----------------------------------------")
+        # db = client.user_db
+    
+    db = client.get_database('user_db', bson.codec_options.CodecOptions(
+        uuid_representation=bson.binary.UUID_SUBTYPE),)
+
     result_cursor = db.user_collection.find()
-    print(list(result_cursor))
+        #print(list(result_cursor))
+    pprint.pprint(result_cursor)
+
 
     # collection = user_collection
     return db.user_collection
@@ -141,59 +154,39 @@ class Listener(user_proto_pb2_grpc.UserServiceServicer):
     def get_user_info_by_uuid(self,request,context):
         self.counter += 1
 
-        if self.counter % 1000 ==0:
-            print("Servicer process cnts = ",self.counter)
-
-        # password random:
-        db_generated_password = random_password(10)
-
-        # uuid
-            # db_generated_uuid = "da00fcb1-2869-4f47-b7ed-956b9afdf7f1"
-        db_generated_uuid = uuid.uuid1()
-
-        # user_id
-            # 1. Check max_user_id
-        check_cur   = self.db.find().sort([('user_id', -1)]).limit(1)
-        _tem_data   = check_cur.next()
-        max_user_id = _tem_data['user_id']
-        self.logger.debug("the max user_id in db  = %d"%max_user_id)
-            # 2. Faire user_id += 1
-        db_generated_user_id = int(max_user_id + 1)
 
        
 
         self.logger.info("Get Request = ")
         self.logger.info(request.uuid)
 
-        my_convered_uuid = uuid.UUID(request.uuid)
-        print("[INFO]: Get uuid :  %s" % str(my_convered_uuid))
-
         tem_arg = {
-            "uuid": uuid.UUID(my_convered_uuid)
+            "uuid": uuid.UUID(request.uuid)
         }
-
-        # tem_arg = {
-        #     'user_id': 13
-        # }
-
+       
         # Insert
-        # result = self.db.find(tem_arg)
-        result = self.db.find({'uuid': uuid.UUID('3442a288-b100-445e-b4dc-ae6b06d3ee28')})
+        result = self.db.find(tem_arg)
+        # result = self.db.find({'uuid': uuid.UUID('3442a288-b100-445e-b4dc-ae6b06d3ee28')})
         my_data = result.next()
         self.logger.info("Get the querry !")
-        self.logger.debug(my_data)
+        self.logger.debug(pprint.pprint(my_data))
+
+        print("###################################")
+        print(my_data['uuid'])
+        print(my_data['first_name'])
+        print("##################################")
 
         # Check DB
-        check_all  = self.db.find()
-        _tem_data = check_all.next()
-        while _tem_data:
-            self.logger.info(_tem_data)
-            try:
-                _tem_data = check_all.next()
-            except:
-                _tem_data = []
+        # check_all  = self.db.find()
+        # _tem_data = check_all.next()
+        # while _tem_data:
+        #     self.logger.info(pprint.pprint(_tem_data))
+        #     try:
+        #         _tem_data = check_all.next()
+        #     except:
+        #         _tem_data = []
 
-        return user_proto_pb2.RegisterResponse(uuid=str(result['uuid']),first_name=result['first_name'],family_name=result['family_name'],email=result['email'],user_id=result['user_id'],email_is_valid=result['email_is_valid'])
+        return user_proto_pb2.GetUserInfoResponse(uuid=str(my_data['uuid']),first_name=my_data['first_name'],family_name=my_data['family_name'],email=my_data['email'],user_id=int(my_data['user_id']),email_is_valid=my_data['email_is_valid'])
 
 
 
