@@ -16,3 +16,9 @@ virtualenv -p python3 env
 source env/bin/activate
 pip3 install grpcio
 pip3 install grpcio-tools
+
+# [Johnny]: Add the python package for log
+pip3 install logrusformatter
+
+# [Johnny]: Add the mongodb package for python
+pip3 install pymongo
