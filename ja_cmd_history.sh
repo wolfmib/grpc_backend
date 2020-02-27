@@ -28,3 +28,8 @@ git pull origin grpc_mongodb_python_go_v1_str
 source ja_mongodb_export.sh
 source ja_mongodb_import.sh
 source _ja_check_mongodb_user_db.sh
+
+
+echo "handle the display find.() display uuid format "
+
+curl https://github.com/mongodb/mongo-csharp-driver/blob/master/uuidhelpers.js --out uuidhelpers.js

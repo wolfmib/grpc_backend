@@ -25,4 +25,36 @@ echo "Kill database method"
 [mongo]: use user_db
 [mongo]: db.dropDatabase()
 
+db.user_collection.find().pretty()
 
+
+
+echo "Handle Air-Mongodb display BinData(4,xxx)"
+echo "But... I want to display in hex format)
+id = new BinData(4,"JCpIblkkEeqTXXwE0NmHRA==")
+id.hex()
+
+# Show this:    242a486e592411ea935d7c04d0d98744
+# I want this:  242a486e-5924-11ea-935d-7c04d0d98744
+# Fugire out later
+
+
+
+
+
+
+
+
+
+
+
+# UUID proboem
+
+Store a JavaScript Function on the Server
+https://docs.mongodb.com/manual/tutorial/store-javascript-function-on-server/
+
+Custom Function
+https://stackoverflow.com/questions/31620582/custom-functions-calculated-columns-mongodb-projection
+
+echo mongo_setting: Tricks
+http://blog.minimum.se/2017/01/22/mongo-db-tips-and-tricks.html
