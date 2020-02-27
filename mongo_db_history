@@ -17,4 +17,4 @@ db.user_collection.find({'uuid':UUID('3442a288-b100-445e-b4dc-ae6b06d3ee28')})
 #----Rememer add int() when return response for int32 proto message------
 # proto:        int32 user_id = 5;
 # server.py:    response(user_id=int(my_data['user_id']))
-############################################################
+############################################################mongoexport --collection=user_collection --db=user_db --out=mongodb_user_db.json
