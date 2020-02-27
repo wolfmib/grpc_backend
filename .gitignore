@@ -1,6 +1,9 @@
 # JA
 ja_mongodb/
 
+# VS code
+.vscode/
+
 
 
 # Byte-compiled / optimized / DLL files
