@@ -27,3 +27,4 @@ source ja_run_db.sh
 git pull origin grpc_mongodb_python_go_v1_str
 source ja_mongodb_export.sh
 source ja_mongodb_import.sh
+source _ja_check_mongodb_user_db.sh

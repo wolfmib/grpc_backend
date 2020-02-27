@@ -24,3 +24,5 @@ mongoimport --db user_db --collection user_collection --file mongodb_user_db.jso
 echo "Kill database method"
 [mongo]: use user_db
 [mongo]: db.dropDatabase()
+
+
