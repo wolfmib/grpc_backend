@@ -35,3 +35,5 @@ echo "handle the display find.() display uuid format "
 curl https://github.com/mongodb/mongo-csharp-driver/blob/master/uuidhelpers.js --out uuidhelpers.js
 
 git submodule add git@gitlab.com:Johnny_Wick/ja_gitlab_grpc_proto.git proto
+rm -rf .git/modules/proto/
+rm .gitmodules
