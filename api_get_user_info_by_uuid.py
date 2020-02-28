@@ -32,6 +32,7 @@ def run(send_port):
     # Setting API Request Content
     print("[Mary]: Please enter your uuid . ")
     print("Example: '3442a288-b100-445e-b4dc-ae6b06d3ee28'")
+    print("Example: '242a486e-5924-11ea-935d-7c04d0d98744'")
     req_uuid = input()
    
     print("\n---------------------------")
