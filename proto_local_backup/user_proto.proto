@@ -1,5 +1,10 @@
 syntax = "proto3";
 
+package user_proto;
+
+option go_package = "github.com/johnny_hung/proto/user_proto";  
+
+
 service UserService{
     rpc register_api(RegisterRequest) returns( RegisterResponse) {}
     rpc get_user_info_by_uuid(GetUserInfoRequest) returns (GetUserInfoResponse){}
