@@ -38,9 +38,32 @@
 
 ---
 
-- See Code: - check python_list like map
+- See Code:
 - check python_dict like map
+- check python_inverse_dict like map
 
 ![img_map](img/map.jpg)
 
 ---
+
+## Foor Loop (Similar to C program)
+
+---
+
+- Loop Original Way
+- Loop Map for Key, Value
+
+![img_loop](img/loop.jpg)
+
+---
+
+## While & Loop avec Index, Value
+
+---
+
+- check while loop
+- check also for index, value in enumerate(python_list)
+
+---
+
+![img_while](img/while.jpg)
