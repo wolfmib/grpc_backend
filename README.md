@@ -67,3 +67,14 @@
 ---
 
 ![img_while](img/while.jpg)
+
+## Custom Function et errors handling
+
+---
+
+- check custom function sqrt
+- check custom function 'power' with 'errors' handling
+
+---
+
+![img_f_et_e](img/function_et_errors.jpg)
