@@ -10,7 +10,7 @@ import threading
 ######################### logger_handler() ######################################
 import sys
 import logging
-from logrusformatter import LogrusFormatter   #!pip3 install logrusformatter 
+from logrusformatter import LogrusFormatter   #!pip3 install logrusformatter
 #################################################################################
 
 ######################### mongodb_handler () ##############
@@ -56,7 +56,7 @@ def mongodb_handler():
     print("[MongoDB]: Set the uuid-format for the db [%s] !!" % db_address)
     print("-----------------------------------------")
         # db = client.user_db
-    
+
     db = client.get_database('user_db', bson.codec_options.CodecOptions(
         uuid_representation=bson.binary.UUID_SUBTYPE),)
 
@@ -155,7 +155,7 @@ class Listener(user_proto_pb2_grpc.UserServiceServicer):
         self.counter += 1
 
 
-       
+
 
         self.logger.info("Get Request = ")
         self.logger.info(request.uuid)
@@ -163,7 +163,7 @@ class Listener(user_proto_pb2_grpc.UserServiceServicer):
         tem_arg = {
             "uuid": uuid.UUID(request.uuid)
         }
-       
+
         # Insert
         result = self.db.find(tem_arg)
         # result = self.db.find({'uuid': uuid.UUID('3442a288-b100-445e-b4dc-ae6b06d3ee28')})
@@ -210,7 +210,7 @@ def serve(input_port):
     print("[Jason]: are you sure to proceed the server !")
     read_nothing = input()
 
-    # example:    
+    # example:
         #  [::]:5001
     server.add_insecure_port("[::]:%d"%my_port)
     server.start()
@@ -234,5 +234,5 @@ if __name__ == "__main__":
     print("For example 5001")
     my_port = int(input())
     serve(my_port)
-    
+
 
