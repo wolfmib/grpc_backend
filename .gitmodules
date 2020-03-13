@@ -1,3 +1,9 @@
 [submodule "proto"]
 	path = proto
 	url = git@gitlab.com:Johnny_Wick/ja_gitlab_grpc_proto.git
+[submodule "user_services"]
+	path = user_services
+	url = https://github.com/wolfmib/user_grpc_v1.git
+[submodule "gate_services"]
+	path = gate_services
+	url = https://github.com/wolfmib/grpc_gate.git
