@@ -27,23 +27,23 @@ services:
             - MONGO_DATA_DIR=/data/db 
             - MONGO_LOG_DIR=/dev/null 
         volumes:
-            - ./data/db:/data/db
+            - ./ja_mongodb:/ja_mongodb
         networks:
             - database-tier
         ports:
             - 27017
-        command: mongod --logpath=/dev/null 
+        command: mongod --dbpath /ja_mongodb --logpath=/dev/null 
 
     gate_services:
         restart: always
         container_name: "gate_services"
         build: ./gate_services
         ports:
-            - "12345:12345"
+            - "127.0.0.1:12345:12345"
         networks:
             - ja_grpc_backend-tier
         environment:
-            MICRO_ADDRESS: "12345:12345"
+            MICRO_ADDRESS: ":12345"
            
 
 networks:

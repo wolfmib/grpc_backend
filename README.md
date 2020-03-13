@@ -8,8 +8,19 @@ grpc, protobuf
 
 Jean: Try use local host: 172.17.42.1
 
-- access the code to gate-services , to call 172.17.41.1:5001
-- then user_services shall be able to hear from gate
+---
+
+Finiah the docker-compose build and up for gate, user, mongodb
+---
+- docker-compose build
+- docker-compose up
+- check the docker-compose.yml file
+- mongodb is mounting to ja_mongodb folder and working fine.
+
+---
+
+![result](img/docker_all.jpg)
+
 
 
 ---
