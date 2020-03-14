@@ -1,0 +1,54 @@
+# docker-compose.yml
+
+version: '3.5'
+
+services:
+    user_services:
+        restart: always
+        container_name: "user_services"
+        build: ./user_services
+        ports:
+            - "5001"
+        links:
+            - datastore
+        depends_on:
+            - datastore
+        networks:
+            - ja_grpc_backend-tier
+            - database-tier
+        environment:
+            DB_HOST: "mongodb://datastore:27017"
+            MICRO_ADDRESS: ":5001"
+    
+    datastore:
+        image: mongo:latest
+        container_name: 'datastore'
+        environment: 
+            - MONGO_DATA_DIR=/data/db 
+            - MONGO_LOG_DIR=/dev/null 
+        volumes:
+            - ./ja_mongodb:/ja_mongodb
+        networks:
+            - database-tier
+        ports:
+            - 27017
+        command: mongod --dbpath /ja_mongodb --logpath=/dev/null 
+
+    gate_services:
+        restart: always
+        container_name: "gate_services"
+        build: ./gate_services
+        ports:
+            - "127.0.0.1:12345:12345"
+        networks:
+            - ja_grpc_backend-tier
+        environment:
+            MICRO_ADDRESS: ":12345"
+           
+
+networks:
+    ja_grpc_backend-tier:
+        name: ja_grpc_backend-tier
+    database-tier:
+        name: database-tier
+        

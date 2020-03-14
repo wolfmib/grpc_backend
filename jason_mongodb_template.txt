@@ -1,0 +1,8 @@
+systemLog:
+  destination: file
+  path: ja_db/mongod.log
+  logAppend: true
+storage:
+  dbPath: ja_db
+net:
+  bindIp: 127.0.0.1
