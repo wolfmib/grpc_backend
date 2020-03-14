@@ -22,6 +22,15 @@ Finiah the docker-compose build and up for gate, user, mongodb
 ![result](img/docker_all.jpg)
 
 
+## Make the mongodb user_id as float64 as they want..
+---
+
+don't try to convert, it took too much time
+
+---
+
+- mongodb_user_id: float64
+- grpc uer_id: int (for transfer , it's fine)
 
 ---
 
