@@ -27,7 +27,7 @@ echo "       tu dois commit back to gitlab first"
 echo "Enter commit message = 'clean'"
 echo "Are you ready ? "
 read nothing_var
-source ja_git_push_back_v2.sh
+source ja_git_push_back_v3.sh
 
 
 echo
