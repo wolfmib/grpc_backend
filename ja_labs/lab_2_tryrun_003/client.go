@@ -1,38 +1,33 @@
 package main
 
 import (
-	"log"
-
-	"github.com/wolfmib/grpc_backend/ja_labs/lab_2_protobuf/chat"
+	"github.com/wolfmib/ja_labs/lab_2_tryrun_003/chat"
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
+	"log"
 )
 
 func main() {
-
-	//conn
-	var conn *grpc.ClientConn
-
+	// conn
 	conn, err := grpc.Dial(":9000", grpc.WithInsecure())
 	if err != nil {
-		log.Fatalf("err when grpc.Dial:   %v", err)
+		log.Fatalf("Dial fail:  %v", err)
 	}
 
-	defer conn.Close()
-
-	//c client
+	// creer chat client
 	c := chat.NewChatServiceClient(conn)
 
+	//
 	sendMess := chat.Mess{
-		Body: "Sedning from the Client",
+		Body: "hihuihuihuhuhihiuhiuhui",
 	}
 
-	// call
+	// call rpc:
 	res, err := c.SayBonjour(context.Background(), &sendMess)
 	if err != nil {
-		log.Fatalf("err when grpc.Dial:   %v", err)
+		log.Fatalf("SayBonjour fail dans la Client:  %v", err)
 	}
 
-	log.Printf("Response:    %s", res.Body)
+	log.Printf("Received the message from server:    %s\n", res.Body)
 
 }

@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+package chat;
+
+option go_package ="./";
+
+message Mess{
+    string Body = 1;
+}
+
+//the service following by the oooo.proto !!!
+service ChatService{
+    // one simple rpc
+    rpc SayBonjour(Mess) returns (Mess) {}
+}
+
+// remember 
+// rps OOOOo () returns (OOOO) {} ....  the ()
+// plugins=grpc:chat  , also = 
+
+
+/*
+ then , do SayBonjour() (rpc code)
+
+ chat.go
+
+ log
+ org/x/net/context 
+
+
+ type Server struct{}
+
+ func (s *Server) SayBonjour(ctx context.Context, message= *Mess) (*Mess, error) {
+
+    // message for recv
+
+    // printout the body
+    message.Body
+
+    // returns
+    return &Mess{Body:"Gan ........."},nil 
+
+ }
+
+ // go mod for server.go
+
+ // import oooooooo/chat 
+
+ s := chat.Server() 
+
+ chat.ResigerChatServierServer(grpcServer, &s)
+
+
+
+
+
+
+*/
